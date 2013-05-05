@@ -217,7 +217,7 @@ Devise.setup do |config|
   
   require "omniauth-evernote"
   site =  'https://sandbox.evernote.com' 
-  config.omniauth :evernote, 'henghonglee-4022', '05d185d673f7f3d7', :client_options => {:site => site}
+  config.omniauth :evernote, 'henghonglee-9728', 'f59ba242dab941ae', :client_options => {:site => site}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
