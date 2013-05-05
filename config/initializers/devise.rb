@@ -209,7 +209,7 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-
+  # TODO: add in github omniauth
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
@@ -217,7 +217,7 @@ Devise.setup do |config|
   
   require "omniauth-evernote"
   site =  'https://sandbox.evernote.com' 
-  config.omniauth :evernote, 'henghonglee-9728', 'f59ba242dab941ae', :client_options => {:site => site}
+  config.omniauth :evernote, 'henghonglee-3116', 'a0772e8e1cd00779', :client_options => {:site => site}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
