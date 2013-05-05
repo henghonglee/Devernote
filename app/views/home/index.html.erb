@@ -1,6 +1,6 @@
 <% if current_user %>
 	<% if current_user.github_username %>
-		<h1><%= current_user.github_username%></h1><a href="/set_github_username/asd">reset</a>
+		<h1><%= current_user.github_username%></h1>
 
 	
 		<%for repo in current_user.repos%>
@@ -8,8 +8,9 @@
 			<h4>Repo hook_url : <%=root_url%>repo?repo_id=<%= repo.id %>&user_id=<%=current_user.id%>  <a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">update notes now</a><h4>			
 
 		<%end%>
-		<%end%>		
+	<%else%>		
 	<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
+	<%end%>		
 <%else%>
 
 <%end%>
