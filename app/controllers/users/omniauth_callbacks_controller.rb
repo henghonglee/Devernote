@@ -16,7 +16,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     def github
       puts request.env["omniauth.auth"]
-      current_user.github_username = request.env["omniauth.auth"]["raw_info"]["login"]
+      current_user.github_username = request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
       current_user.save
       redirect_to root_path
     end
