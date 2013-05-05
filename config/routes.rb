@@ -1,12 +1,10 @@
 Evernotedev::Application.routes.draw do
 
-resources :repo;
-  get '/set_github_username/:username' => 'home#setGitHubName'
+  resources :repo;
+  
   root :to => "home#index"
-devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-devise_scope :user do
-  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-end
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
