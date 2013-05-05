@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   def index
     #TODO: need to make this changable
-    current_user.setGitHubUsername("henghonglee1")
+    if current_user
+      current_user.setGitHubUsername("henghonglee1")
+    end
   end
   
   def setGitHubName
