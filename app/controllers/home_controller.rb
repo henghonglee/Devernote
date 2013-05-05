@@ -7,7 +7,8 @@ class HomeController < ApplicationController
   end
   
   def setGitHubName
-    current_user.setGitHubUsername(params[:username])
+      current_user.setGitHubUsername("")
+
     redirect_to root_path
   end
 end
