@@ -1,7 +1,7 @@
 Evernotedev::Application.routes.draw do
 
 resources :repo;
-
+  get '/set_github_username/:username' => 'home#setGitHubName'
   root :to => "home#index"
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 devise_scope :user do
