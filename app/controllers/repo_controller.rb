@@ -10,9 +10,12 @@ class RepoController < ApplicationController
   end
   
   def edit
+    
   end
 
   def create
+    Resque.enqueue(GitWorker,params[:user_id],params[:repo_id])
+    render :text => "sent worker to queue"
   end
 
   def new
