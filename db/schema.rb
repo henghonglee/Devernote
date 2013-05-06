@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506031841) do
+ActiveRecord::Schema.define(:version => 20130506084208) do
 
   create_table "repos", :force => true do |t|
     t.string   "clone_url"
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "hooked",     :default => false
+    t.string   "html_url"
   end
 
   create_table "users", :force => true do |t|
