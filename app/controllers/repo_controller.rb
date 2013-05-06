@@ -2,8 +2,10 @@ class RepoController < ApplicationController
   require 'net/http'
   require 'httparty'
   def index
-    
-      
+  end
+  
+  def update_repo
+    Resque.enqueue(GitWorker,current_user.id,params[:repo_id])
   end
   
   def show #toggle hooks
