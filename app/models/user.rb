@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable,:omniauth_providers => [:evernote,:github]
   attr_accessible :provider, :uid, :everauth , :github_username
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  serialize :tags
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :tags
   # attr_accessible :title, :body
   has_many :repos
   def setGitHubUsername(username)

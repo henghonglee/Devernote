@@ -8,7 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       puts @user
       if @user.persisted?
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-  #      set_flash_message(:notice, :success, :kind => "facebook") if is_navigational_format?
+
       else
         puts "new user reg"
         session["devise.evernote_data"] = request.env["omniauth.auth"]
@@ -17,7 +17,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     def github
       current_user.github_username = request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
+      current_user.github_authtoken =request.env['omniauth.auth']['credentials']['token']
       current_user.save
+      
       @repos = JSON.parse(open("https://api.github.com/users/#{current_user.github_username}/repos").read)    
 
       for repo in @repos

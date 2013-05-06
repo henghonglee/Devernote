@@ -31,8 +31,8 @@ class GitWorker
         end
         
         
-        searchTerms = ["TODO","FIXME","XXX"]
-        for searchTerm in searchTerms
+        
+        for searchTerm in user.tags
         ss = %x(grep #{searchTerm} #{Rails.root.join('repos',repo["name"])} -nr -A 20)
         if ss.length>0
           ss = ss + "--"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505033737) do
+ActiveRecord::Schema.define(:version => 20130506023208) do
 
   create_table "repos", :force => true do |t|
     t.string   "clone_url"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20130505033737) do
     t.string   "uid"
     t.string   "everauth"
     t.string   "github_username"
+    t.string   "github_authtoken"
+    t.text     "tags"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
