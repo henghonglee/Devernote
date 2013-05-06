@@ -24,7 +24,7 @@ class RepoController < ApplicationController
           }
         }.to_json,
         :headers=> {"User-Agent" => "github.hs/0.7.0"})
-        
+        puts response
         repo.hook_id = response["id"]
         repo.hooked = true
         repo.save
