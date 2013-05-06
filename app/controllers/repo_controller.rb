@@ -10,7 +10,7 @@ class RepoController < ApplicationController
     repo = Repo.find(params[:id])
     if !repo.hooked
       # go create a hook
-
+      Resque.enqueue(GitWorker,params[:user_id],params[:id])
         response = HTTParty.post("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks?access_token=#{current_user.github_authtoken}",:body=> 
         {
           :name => "web",
@@ -36,7 +36,7 @@ class RepoController < ApplicationController
       repo.save
       
     end
-#    Resque.enqueue(GitWorker,params[:user_id],params[:id])
+
     redirect_to root_path
   end
   
