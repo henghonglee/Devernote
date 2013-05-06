@@ -29,7 +29,7 @@ class RepoController < ApplicationController
         repo.hooked = true
         repo.save
     else
-      response = HTTParty.delete("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks/#{repo.hook_id}",:headers=> {"User-Agent" => "github.hs/0.7.0"})
+      response = HTTParty.delete("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks/#{repo.hook_id}?access_token=#{current_user.github_authtoken}",:headers=> {"User-Agent" => "github.hs/0.7.0"})
       puts response
       repo.hook_id = nil
       repo.hooked = false
