@@ -10,18 +10,26 @@ class GitWorker
         client = EvernoteOAuth::Client.new(token: authtoken)
         note_store = client.note_store
         notebooks_list = note_store.listNotebooks
+
+        puts "notebooks list"
+        puts notebooks_list
+        
         nb = nil
         for notebk in notebooks_list
           if notebk.name == repo["name"]
             nb = notebk
           end
         end
+        
         if nb == nil
           notebook = Evernote::EDAM::Type::Notebook.new
           notebook.name = repo["name"]
-          nb = note_store.createNotebook(notebook)
-          
+          nb = note_store.createNotebook(notebook)  
         end
+        
+        puts "notebook final"
+        puts nb
+        
         ##########################
 
         # note_filter = Evernote::EDAM::NoteStore::NoteFilter.new
