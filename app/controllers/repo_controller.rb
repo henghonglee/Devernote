@@ -1,5 +1,6 @@
 class RepoController < ApplicationController
   require 'net/http'
+  require 'httparty'
   def index
     
       
@@ -9,9 +10,7 @@ class RepoController < ApplicationController
     repo = Repo.find(params[:id])
     if !repo.hooked
       # go create a hook
-      # POST https://api.github.com/repos/henghonglee/BehaviorTree/hooks?access_token=15c4d3473b30dbf40bb3fcd51d9dea0264a94c75
-      uri = URI.parse("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks?access_token=#{current_user.github_authtoken}")
-      response = Net::HTTP.post_form(uri, {
+      HTTParty.post("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks?access_token=#{current_user.github_authtoken}", body: {
         "name"=> "web",
         "active"=> true,
         "events"=> [
@@ -21,8 +20,10 @@ class RepoController < ApplicationController
           "url"=> "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}",
           "content_type"=> "json"
         }
-        })
-        puts response
+        }).body
+      
+      # POST https://api.github.com/repos/henghonglee/BehaviorTree/hooks?access_token=15c4d3473b30dbf40bb3fcd51d9dea0264a94c75
+#        puts response
         #repo.hooked = true
         #repo.save
     else
