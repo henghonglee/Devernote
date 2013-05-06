@@ -63,9 +63,9 @@ EOF
               long_directory = todo[0,todo.index(':',todo.index(':')+1)+1];
               @note = Evernote::EDAM::Type::Note.new
               @note.notebookGuid = nb.guid
-              todocontent = todocontent + long_directory + "<br /><br /><b><u>"
+              todocontent = todocontent + long_directory + "<br /><br /><b>"
               todo = todo.sub(long_directory,"")
-              todocontent = todocontent + todo.strip + "</b></u><br /><br />"
+              todocontent = todocontent + todo.strip + "</b><br /><br />"
               @note.title = todo.strip
               
             elsif todo == "--"
