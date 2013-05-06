@@ -216,7 +216,7 @@ Devise.setup do |config|
   config.omniauth :github, 'a6c482a2de33c9e8f1c2', '80b0e1d18cd2a3cc03beb5489c7f8d212ee00111', :scope => 'user,public_repo' 
   
   require "omniauth-evernote"
-    site =  'https://sandbox.evernote.com' 
+    site =  'https://www.evernote.com' 
     config.omniauth :evernote, 'henghonglee-3116', 'a0772e8e1cd00779', :client_options => {:site => site}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

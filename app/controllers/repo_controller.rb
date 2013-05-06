@@ -47,7 +47,7 @@ class RepoController < ApplicationController
   def create
     # TODO: render something useful here
     Resque.enqueue(GitWorker,params[:user_id],params[:repo_id])
-    render :text => "sent worker to queue"
+    redirect_to root_path
   end
 
   def new
