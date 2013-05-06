@@ -12,13 +12,13 @@ class RepoController < ApplicationController
       # POST https://api.github.com/repos/henghonglee/BehaviorTree/hooks?access_token=15c4d3473b30dbf40bb3fcd51d9dea0264a94c75
       uri = URI.parse("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks?access_token=#{current_user.github_authtoken}")
       response = Net::HTTP.post_form(uri, {
-        "name": "web",
-        "active": true,
-        "events": [
+        "name"=> "web",
+        "active"=> true,
+        "events"=> [
           "push"
         ],
-        "config": {
-          "url": "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}",
+        "config"=> {
+          "url"=> "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}",
           "content_type": "json"
         })
         puts response
