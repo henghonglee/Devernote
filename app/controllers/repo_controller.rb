@@ -20,6 +20,7 @@ class RepoController < ApplicationController
         "config"=> {
           "url"=> "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}",
           "content_type"=> "json"
+        }
         })
         puts response
         repo.hooked = true
