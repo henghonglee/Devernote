@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506084208) do
+ActiveRecord::Schema.define(:version => 20130506102940) do
 
   create_table "repos", :force => true do |t|
     t.string   "clone_url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130506084208) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "hooked",     :default => false
     t.string   "html_url"
+    t.integer  "hook_id"
   end
 
   create_table "users", :force => true do |t|
