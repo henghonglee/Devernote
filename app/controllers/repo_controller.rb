@@ -23,15 +23,15 @@ class RepoController < ApplicationController
         }
         })
         puts response
-        repo.hooked = true
-        repo.save
+        #repo.hooked = true
+        #repo.save
     else
-      @repohooks =  JSON.parse(open("https://api.github.com/repos/#{current_user.github_username}/#{repo["name"]}/hooks?access_token=#{current_user.github_authtoken}").read)
-      for repohook in @repohooks
-        if repohook["config"]["url"] == "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}"
-          puts "found existing hooks"
-        end
-      end
+      # @repohooks =  JSON.parse(open("https://api.github.com/repos/#{current_user.github_username}/#{repo.name}/hooks?access_token=#{current_user.github_authtoken}").read)
+      # for repohook in @repohooks
+      #   if repohook["config"]["url"] == "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}"
+      #     puts "found existing hooks"
+      #   end
+      # end
     end
 #    Resque.enqueue(GitWorker,params[:user_id],params[:id])
     redirect_to root_path
