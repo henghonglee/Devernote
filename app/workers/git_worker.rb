@@ -59,10 +59,13 @@ EOF
                 note_store.createNote(@note)
               end
               directory = todo[0,todo.index(':')];
+              long_directory = todo[0,todo.index(':',todo.index(':')+1)];
               @note = Evernote::EDAM::Type::Note.new
-              @note.title = todo
               @note.notebookGuid = nb.guid
-
+              todocontent = todocontent + todo.gsub(/["'<>&]/, '"' => "&quot;", "'" => "&apos;" , '<' => '&lt;' , '>' => '&gt;' , '&' => '&amp;') + "<br />"
+              todo = todo.sub(long_directory,"")
+              @note.title = todo              
+              
             elsif todo == "--"
 
 @note.content = <<EOF
