@@ -18,6 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def github
       current_user.github_username = request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
       current_user.github_authtoken =request.env['omniauth.auth']['credentials']['token']
+      current_user.tags = ["TODO","FIXME","XXX"]
       current_user.save
       
       @repos = JSON.parse(open("https://api.github.com/users/#{current_user.github_username}/repos").read)    

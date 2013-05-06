@@ -1,10 +1,16 @@
-<% if current_user %>
+
 	<% if current_user.github_username %>
-		<h1><%= current_user.github_username%></h1>
+
+		<h1>GitHub ID = <%= current_user.github_username%></h1>
 		<h2>Tags</h2>
 		<%for tag in current_user.tags%>			
-		<p><%= tag %></p>
+		<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
 		<%end%>
+		<%= form_tag("/add_tag", :method => "get") do %>
+		  <%= label_tag(:tagname, "Add Tag:") %>
+		  <%= text_field_tag(:tagname) %>
+		  <%= submit_tag("Submit") %>
+		<% end %>
 		<%for repo in current_user.repos%>
 			<h2>Repo name : <%=repo.name%><h2>
 			<h4>Repo hook_url : <%=root_url%>repo?repo_id=<%= repo.id %>&user_id=<%=current_user.id%>  <a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">update notes now</a><h4>			
@@ -13,6 +19,3 @@
 	<%else%>		
 	<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
 	<%end%>		
-<%else%>
-
-<%end%>

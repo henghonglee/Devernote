@@ -3,6 +3,8 @@ Evernotedev::Application.routes.draw do
   resources :repo;
   get '/auth/:provider/callback', to: 'sessions#create'
   match '/set_github_username/:username' => 'home#setGitHubName'
+  match '/remove_tag' => 'home#removetag'  
+  match '/add_tag' => 'home#addtag'  
   root :to => "home#index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
