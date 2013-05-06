@@ -32,7 +32,7 @@ class GitWorker
         end
         
         
-        
+        #EN-HH-TODO make the number of lines after code dynamic
         for searchTerm in user.tags
         ss = %x(grep #{searchTerm} #{Rails.root.join('repos',repo["name"])} -nr -A 20)
         if ss.length>0
@@ -63,9 +63,9 @@ EOF
               long_directory = todo[0,todo.index(':',todo.index(':')+1)+1];
               @note = Evernote::EDAM::Type::Note.new
               @note.notebookGuid = nb.guid
-              todocontent = todocontent + long_directory + "<br />"
+              todocontent = todocontent + long_directory + "<br /><br /><b><u>"
               todo = todo.sub(long_directory,"")
-              todocontent = todocontent + todo.strip + "<br />"
+              todocontent = todocontent + todo.strip + "</b></u><br /><br />"
               @note.title = todo.strip
               
             elsif todo == "--"
