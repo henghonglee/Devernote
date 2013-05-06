@@ -1,5 +1,6 @@
 class GitWorker
   @queue = :git_queue
+  #EN-TAG this is my git worker
   def self.perform(user_id,repo_id)
         user = User.find(user_id)
         authtoken = user.everauth
@@ -59,12 +60,13 @@ EOF
                 note_store.createNote(@note)
               end
               directory = todo[0,todo.index(':')];
-              long_directory = todo[0,todo.index(':',todo.index(':')+1)];
+              long_directory = todo[0,todo.index(':',todo.index(':')+1)+1];
               @note = Evernote::EDAM::Type::Note.new
               @note.notebookGuid = nb.guid
-              todocontent = todocontent + todo.gsub(/["'<>&]/, '"' => "&quot;", "'" => "&apos;" , '<' => '&lt;' , '>' => '&gt;' , '&' => '&amp;') + "<br />"
+              todocontent = todocontent + long_directory + "<br />"
               todo = todo.sub(long_directory,"")
-              @note.title = todo              
+              todocontent = todocontent + todo.strip + "<br />"
+              @note.title = todo.strip
               
             elsif todo == "--"
 

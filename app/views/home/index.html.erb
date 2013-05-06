@@ -1,4 +1,4 @@
-
+<%if current_user%>
 	<% if current_user.github_username %>
 
 		<h1>GitHub ID = <%= current_user.github_username%></h1>
@@ -19,3 +19,4 @@
 	<%else%>		
 	<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
 	<%end%>		
+<%end%>		
