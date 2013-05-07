@@ -33,13 +33,13 @@ class GitWorker
         
         ##########################
 
-        # note_filter = Evernote::EDAM::NoteStore::NoteFilter.new
-        # note_filter.notebookGuid = nb.guid
-        # allnbnotes = note_store.findNotes(note_filter, 0, 10)
-        # 
-        # for anote in allnbnotes.notes
-        #   note_store.deleteNote(anote.guid)
-        # end
+        note_filter = Evernote::EDAM::NoteStore::NoteFilter.new
+        note_filter.notebookGuid = nb.guid
+        allnbnotes = note_store.findNotes(note_filter, 0, 10)
+
+        for anote in allnbnotes.notes
+          note_store.deleteNote(anote.guid)
+        end
         
         
         #EN-HH-TODO make the number of lines after code dynamic
