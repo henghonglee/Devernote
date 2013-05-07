@@ -7,6 +7,7 @@ class GitWorker
         repo = Repo.find(repo_id)
         %x(git clone #{repo["clone_url"]} #{Rails.root.join('repos',repo["name"])})
         puts "get or create notebook #{repo["name"]}"
+        #henghonglee-3116.13E7AC27E3D.687474703A2F2F35342E3233352E36382E3235332F75736572732F617574682F657665726E6F74652F63616C6C6261636B.325369766D84655F67D44F92E703E011
         client = EvernoteOAuth::Client.new(token: authtoken)
         note_store = client.note_store
         notebooks_list = note_store.listNotebooks

@@ -11,6 +11,8 @@ end
 
 module Evernotedev
   class Application < Rails::Application
+    ENV['EN_CONSUMER_KEY'] = 'henghonglee-3116'
+    ENV['EN_CONSUMER_SECRET'] = 'a0772e8e1cd00779'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

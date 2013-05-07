@@ -6,6 +6,7 @@ class RepoController < ApplicationController
   
   def update_repo
     Resque.enqueue(GitWorker,current_user.id,params[:repo_id])
+    redirect_to root_path
   end
   
   def show #toggle hooks
