@@ -17,6 +17,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'omniauth-github'
 gem 'unicorn'
+gem 'foreman'
 gem 'resque'
 gem 'devise'
 
