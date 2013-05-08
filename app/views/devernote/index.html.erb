@@ -6,7 +6,7 @@
 		<h2>Active Tags</h2>
 		<%for tag in current_user.tags%>			
 
-			<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
+			<p><%= tag %>  [<a href="/remove_tag?tagname=<%= tag %>">X</a>]</p>
 
 		<%end%>
 
