@@ -35,7 +35,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           current_user.repos << created_repo
         end
       end
-      redirect_to root_path
+      redirect_to devernote_index_path
     end
  
 end

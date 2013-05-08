@@ -1,6 +1,9 @@
 Evernotedev::Application.routes.draw do
 
-  resources :repo;
+ 
+
+  resources :repo
+  resources :devernote
   get '/auth/:provider/callback', to: 'sessions#create'
   match '/set_github_username/:username' => 'home#setGitHubName'
   match '/update_repo/:repo_id' => 'repo#update_repo'
