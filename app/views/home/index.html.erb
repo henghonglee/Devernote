@@ -1,9 +1,9 @@
 <%if current_user%>
 
 	<% if current_user.github_username %>
-		<h1>GitHub ID = <%= current_user.github_username%></h1>
+	 <div class="hero-unit container">
+		<h1>GitHub User: <%= current_user.github_username%></h1>
 		<h2>Tags</h2>
-
 		<%for tag in current_user.tags%>			
 
 			<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
@@ -16,25 +16,27 @@
 		  		<%= submit_tag("Submit") %>
 
 			<% end %>
-
+			</div>
+		<div class = "container">
 		<%for repo in current_user.repos%>
 			
 			<h2>Repo name : <%=repo.name%><h2>
 
 				<%if repo.hooked%>
 
-					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a><h4>
+					<a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a>
 
 				<%else%>
 
-					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a><h4>
+					<a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a>
 
 				<%end%>
 
 					<h4><a href="/update_repo/<%= repo.id %>">Update Now</a><h4>
 
+					
 		<%end%>
-	
+		</div>
 	<%else%>		
 		<div class="hero-unit container">
 
