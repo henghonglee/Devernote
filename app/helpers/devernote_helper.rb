@@ -1,0 +1,2 @@
+module DevernoteHelper
+end

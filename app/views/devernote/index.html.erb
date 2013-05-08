@@ -1,0 +1,43 @@
+<% if current_user %>
+	<% if current_user.github_username %>
+	 <div class="hero-unit container">
+		<h1>GitHub User: <%= current_user.github_username%></h1>
+		</br></br>
+		<h2>Active Tags</h2>
+		<%for tag in current_user.tags%>			
+
+			<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
+
+		<%end%>
+
+			<%= form_tag("/add_tag", :method => "get") do %>
+		  		<%= label_tag(:tagname, "Add Tag:") %>
+		  		<%= text_field_tag(:tagname) %>
+		  		<%= submit_tag("Submit") %>
+
+			<% end %>
+			</div>
+		<div class = "container">
+		<%for repo in current_user.repos%>
+			
+			<h2>Repository: <%=repo.name%><h2>
+
+				<%if repo.hooked%>
+
+					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a></h4>
+
+				<%else%>
+
+					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a></h4>
+
+				<%end%>
+
+					<h4><a href="/update_repo/<%= repo.id %>">Update Now</a><h4>
+
+					
+		<%end%>
+		</div>
+	<%else%>		
+
+	<%end%>	
+<%end%>	
