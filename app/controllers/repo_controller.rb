@@ -6,7 +6,7 @@ class RepoController < ApplicationController
   
   def update_repo
     Resque.enqueue(GitWorker,current_user.id,params[:repo_id])
-    redirect_to root_path
+    redirect_to devernote_index_path
   end
   
   def show #toggle hooks
@@ -40,7 +40,7 @@ class RepoController < ApplicationController
       
     end
 
-    redirect_to root_path
+    redirect_to devernote_index_path
   end
   
   def edit

@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def removetag
     current_user.tags.delete(params[:tagname])
     current_user.save
-    redirect_to root_path
+    redirect_to devernote_index_path
   end
   def addtag
     for tag in current_user.tags
@@ -16,6 +16,6 @@ class HomeController < ApplicationController
     end
     current_user.tags << params[:tagname]
     current_user.save
-    redirect_to root_path
+    redirect_to devernote_index_path
   end
 end
