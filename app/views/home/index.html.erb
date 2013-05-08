@@ -1,6 +1,6 @@
 <% if current_user %>
-<% if not current_user.github_username %>
-
+<% if current_user.github_username %>
+<%else%>
 	<div class="hero-unit container">
 
 	<h1 class="span12" style="text-align: center;font-size: 80px">Devernote</h1>
