@@ -1,26 +1,49 @@
 <%if current_user%>
-	<% if current_user.github_username %>
 
+	<% if current_user.github_username %>
 		<h1>GitHub ID = <%= current_user.github_username%></h1>
 		<h2>Tags</h2>
+
 		<%for tag in current_user.tags%>			
-		<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
+
+			<p><a href="/remove_tag?tagname=<%= tag %>"><%= tag %></a></p>
+
 		<%end%>
-		<%= form_tag("/add_tag", :method => "get") do %>
-		  <%= label_tag(:tagname, "Add Tag:") %>
-		  <%= text_field_tag(:tagname) %>
-		  <%= submit_tag("Submit") %>
-		<% end %>
+
+			<%= form_tag("/add_tag", :method => "get") do %>
+		  		<%= label_tag(:tagname, "Add Tag:") %>
+		  		<%= text_field_tag(:tagname) %>
+		  		<%= submit_tag("Submit") %>
+
+			<% end %>
+
 		<%for repo in current_user.repos%>
+			
 			<h2>Repo name : <%=repo.name%><h2>
+
 				<%if repo.hooked%>
+
 					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a><h4>
+
 				<%else%>
+
 					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a><h4>
+
 				<%end%>
+
 					<h4><a href="/update_repo/<%= repo.id %>">Update Now</a><h4>
+
 		<%end%>
+	
 	<%else%>		
-	<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
+		<div class="hero-unit container">
+
+		<h1 class="span12" style="text-align: center;font-size: 80px">Devernote</h1>
+		</br></br></br></br></br></br>
+		<%= link_to "Now Sign in with Github", user_omniauth_authorize_path(:github) , {:class=>"btn btn btn-large offset3", :style=>"color:#000000 ; font-size: 50px; height:60px;padding-top:40px"} %>
+		
+		
+		</div>
 	<%end%>		
+
 <%end%>		
