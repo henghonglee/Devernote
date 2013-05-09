@@ -7,12 +7,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @user.persisted?
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       else
-        puts "new user reg"
-        session["devise.evernote_data"] = request.env["omniauth.auth"]
-        redirect_to new_user_registration_url
+
+        redirect_to root_path
       end
     end
     def github
+      if not request.env['omniauth.auth']['credentials']['token']
+      redirect_to root_path
+      end  
       current_user.github_username = request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
       current_user.github_authtoken =request.env['omniauth.auth']['credentials']['token']
       current_user.tags = ["TODO","FIXME","XXX"]
