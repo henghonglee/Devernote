@@ -8,16 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div class="navbar">
+	<div class="navbar-fixed-top container span3 offset11" style="background-color:green">
 	  <div class="navbar-inner">
-	    <a class="brand" href="#">Devernote</a>
 	    <ul class="nav">
 
 		<% if current_user%>
-			<%= link_to "Sign out Evernote", destroy_user_session_path,{ :method => :delete , :class=>"btn btn-danger btn-large offset9" , :style=>"color:#FFFFFF ; font-size: 20px;padding-top:3px; height:16px;"}%>
+		<div style="padding-top:20px;padding-left:30px;">
+			<%= link_to "Evernote Sign out ", destroy_user_session_path,{ :method => :delete ,:style=>"font-size: 25px"}%>
+		</div>
+
 		<%else%>
-	<%= link_to "Sign in with Evernote", user_omniauth_authorize_path(:evernote) ,{ :class=>"btn btn-success btn-large offset9" , :style=>"color:#FFFFFF ; font-size: 20px;padding-top:3px; height:16px;"}%>
-		
+		<div style="padding-top:20px;padding-left:15px;">
+			<%= link_to "Sign in with Evernote", user_omniauth_authorize_path(:evernote) ,{:style=>"font-size: 25px"}%>
+		</div>
 		<%end%>
 	    </ul>
 	  </div>
