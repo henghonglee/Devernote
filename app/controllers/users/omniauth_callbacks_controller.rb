@@ -1,19 +1,23 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   require 'open-uri'
   require 'json'
+
+    def failure
+      redirect_to root_path
+    end
     def evernote
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.find_for_evernote_oauth(request.env["omniauth.auth"], current_user)
       if @user.persisted?
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       else
-
         redirect_to root_path
       end
     end
     def github
-      if not request.env['omniauth.auth']['credentials']['token']
-      redirect_to root_path
+      if not request.env['omniauth.auth']['credentials']['token'] 
+        puts "redirect to rootpath"
+        redirect_to root_path
       end  
       current_user.github_username = request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
       current_user.github_authtoken =request.env['omniauth.auth']['credentials']['token']

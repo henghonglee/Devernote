@@ -6,5 +6,30 @@
 	</br></br></br></br></br></br>
 	<%= link_to "Now Sign in with Github", user_omniauth_authorize_path(:github) , {:class=>"btn btn btn-large offset3", :style=>"color:#000000 ; font-size: 50px; height:60px;padding-top:40px"} %>
 	</div>
- 
+
+
+	<%else%>
+
+	<div class="hero-unit container">
+
+		<h1 class="span12" style="text-align: center;font-size: 80px">Devernote</h1>
+		</br></br></br></br></br></br>
+
+		<h3 >1. Start Monitoring on Devnote.com</h3>
+		<%= image_tag "https://s3.amazonaws.com/devernote-store/ss1.png"%>
+		</br></br>
+		<h3  >2. Add some tags to your code</h3>
+		<script src="https://gist.github.com/henghonglee/5543544.js"></script>
+		</br></br>
+		<h3>3. Commit and push to github as usual</h3>
+		<script src="https://gist.github.com/anonymous/5543363.js"></script>
+		</br></br>
+		<h3>4. Automatically manages coding tasks for you</h3>
+		<%= image_tag "https://s3.amazonaws.com/devernote-store/ss.png"%>
+		</br></br>
+		<%= link_to "Sign in with Evernote", user_omniauth_authorize_path(:evernote) , {:class=>"btn btn-success btn-large offset3", :style=>"color:#000000 ; font-size: 50px; height:60px;padding-top:40px"} %>
+
+
+	</div>
+
 <%end%>

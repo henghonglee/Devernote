@@ -9,8 +9,9 @@ Evernotedev::Application.routes.draw do
   match '/update_repo/:repo_id' => 'repo#update_repo'
   match '/remove_tag' => 'home#removetag'  
   match '/add_tag' => 'home#addtag'  
+  
   root :to => "home#index"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },:skip => [:registrations]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable,:omniauth_providers => [:evernote,:github]
   attr_accessible :provider, :uid, :everauth , :github_username
   # Setup accessible (or protected) attributes for your model
