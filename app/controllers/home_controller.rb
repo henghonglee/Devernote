@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   caches_page :index
   def index
-    
+    if current_user.github_username
+      redirect_to devernote_index_path
+    end
   end
   def removetag
     current_user.tags.delete(params[:tagname])
