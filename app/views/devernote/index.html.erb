@@ -1,7 +1,7 @@
 <% if current_user %>
 	<% if current_user.github_username %>
 	 <div class="hero-unit container">
-		<h1>GitHub User: <%= current_user.github_username%></h1>
+		<h1>GitHub User: <%= current_user.github_username%></h1><p>[<a href="/set_github_username/<%= current_user.github_username%>">Refresh</a>]</p>
 		</br></br>
 		<h2>Active Tags</h2>
 		<%for tag in current_user.tags%>			
