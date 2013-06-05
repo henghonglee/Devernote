@@ -5,9 +5,10 @@ class DevernoteController < ApplicationController
   end
   
   def refresh
+    puts "refreshing repos"
     current_user.github_username = params[:username]
     @repos = JSON.parse(open("https://api.github.com/users/#{current_user.github_username}/repos").read)    
-
+    puts @repos
     for repo in @repos
       
       created_repo =  Repo.create(  
