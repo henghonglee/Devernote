@@ -14,6 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to root_path
       end
     end
+    
     def github
       if not request.env['omniauth.auth']['credentials']['token'] 
         puts "redirect to rootpath"

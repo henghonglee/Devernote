@@ -2,6 +2,7 @@ class GitWorker
   @queue = :git_queue
   #EN-TAG this is my git worker
   def self.perform(user_id,repo_id)
+        puts "user_id = #{user_id}" 
         user = User.find(user_id)
         authtoken = user.everauth
         repo = Repo.find(repo_id)
