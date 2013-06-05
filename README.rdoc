@@ -10,10 +10,12 @@ To manage private git projects , clone this repository
 
 == Setting up
 
-git clone https://github.com/henghonglee/Devernote.git
+[Clone Devernote]<code>git clone https://github.com/henghonglee/Devernote.git<code>
 
-Devernote runs resque which uses redis. Start your redis server here
+[Redis]Devernote runs resque which uses redis. Start your redis server here
 
-bundle exec rake workers:start
+[Start Workers]bundle exec rake workers:start
 
-rails server
+[Start Server]rails server
+
+[Usage] running at http://localhost:3000
