@@ -213,7 +213,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, 'a6c482a2de33c9e8f1c2', '80b0e1d18cd2a3cc03beb5489c7f8d212ee00111', :scope => 'user,public_repo' 
+  config.omniauth :github, '84ad0f6e14e20242d92d', '1582a0ff2c34458bb0be1e3e782f54ef058793ae', :scope => 'user,public_repo' 
   
   require "omniauth-evernote"
 #   site =  'https://www.evernote.com' 
