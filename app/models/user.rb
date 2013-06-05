@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
       user = User.create(  
                            everauth: auth['credentials']['token'],
                            provider:auth.provider,
+                           tags: ["TODO","FIXME","XXX"],
                            uid:auth.uid,
                            email: "guest_#{Time.now.to_i}#{rand(99)}@example.com",
                            password:Devise.friendly_token[0,20]

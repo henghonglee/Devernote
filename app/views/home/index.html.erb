@@ -4,9 +4,12 @@
 
 	<h1 class="span12" style="text-align: center;font-size: 80px">Devernote</h1>
 	</br></br></br></br></br></br>
-	<%= link_to "Now Sign in with Github", user_omniauth_authorize_path(:github) , {:class=>"btn btn btn-large offset3", :style=>"color:#000000 ; font-size: 50px; height:60px;padding-top:40px"} %>
+	<% if Rails.env.production?  %>
+	<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) , {:class=>"btn btn btn-large offset3", :style=>"color:#000000 ; font-size: 50px; height:60px;padding-top:40px"} %>
 	</div>
-
+	<%else%>
+	<%= link_to "Add New Repo" , new_repo_path%>
+	<%end%>
 
 	<%else%>
 

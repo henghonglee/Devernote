@@ -1,2 +1,12 @@
-<h1>Repo#new</h1>
-<p>Find me in app/views/repo/new.html.erb</p>
+<div class="hero-unit container">
+<h1>New Repo</h1>
+</br>
+
+<%= simple_form_for @repo,:url=>"/repo/" do |f| %>
+  <%= f.input :name, label: 'Repository Name' %>
+  <%= f.input :clone_url, label: 'Repository Clone URL' %>
+  <%= f.input :html_url, label: 'Repository Site URL' %>
+  <%= f.button :submit , :class=>"btn-primary" %>
+<% end %>	
+
+</div>

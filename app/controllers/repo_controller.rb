@@ -44,19 +44,23 @@ class RepoController < ApplicationController
   end
   
   def edit
-    
   end
 
   def create
-    # TODO: render something useful here
-    Resque.enqueue(GitWorker,params[:user_id],params[:repo_id])
-    redirect_to root_path
+    @repo = Repo.new(params[:repo])
+    @repo.save
+    current_user.repos << @repo
+    current_user.save
+    redirect_to devernote_index_path
   end
 
   def new
+    @repo = Repo.new
   end
 
   def destroy
+    @repo = Repo.find(params[:id])
+    @repo.destroy
   end
 
   def update

@@ -1,8 +1,10 @@
 <% if current_user %>
-	<% if current_user.github_username %>
+	
 	 <div class="hero-unit container">
+		<% if current_user.github_username %>
 		<h1>GitHub User: <%= current_user.github_username%></h1><p>[<a href="/set_github_username/<%= current_user.github_username%>">Refresh</a>]</p>
 		</br></br>
+		<%end%>	
 		<h2>Active Tags</h2>
 		<%for tag in current_user.tags%>			
 
@@ -17,27 +19,33 @@
 
 			<% end %>
 			</div>
+			
 		<div class = "container">
 		<%for repo in current_user.repos%>
 			
 			<h2>Repository: <%=repo.name%><h2>
-
-				<%if repo.hooked%>
-
-					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a></h4>
-
-				<%else%>
-
-					<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a></h4>
-
+				<% if Rails.env.production?  %>
+					<%if repo.hooked%>
+						<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Stop Monitoring</a></h4>
+					<%else%>
+						<h4><a href="/repo/<%= repo.id %>?user_id=<%=current_user.id%>">Start Monitoring</a></h4>
+					<%end%>	
 				<%end%>
-
 					<h4><a href="/update_repo/<%= repo.id %>">Update Now</a><h4>
 
 					
 		<%end%>
-		</div>
-	<%else%>		
+		</br></br></br></br></br></br>
+		<% if not Rails.env.production?  %>
+		<h1>Add New Repo</h1>
 
-	<%end%>	
+		<%= simple_form_for @newRepo,:url=>"/repo/" do |f| %>
+		  <%= f.input :name, label: 'Repository Name' %>
+		  <%= f.input :clone_url, label: 'Repository Clone URL' %>
+		  <%= f.input :html_url, label: 'Repository Site URL' %>
+		  <%= f.button :submit %>
+		<% end %>
+		<%end%>
+		</div>
+	
 <%end%>	

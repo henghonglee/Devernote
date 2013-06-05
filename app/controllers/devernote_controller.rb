@@ -1,6 +1,9 @@
 class DevernoteController < ApplicationController
+  
   def index
+    @newRepo = Repo.new
   end
+  
   def refresh
     current_user.github_username = params[:username]
     @repos = JSON.parse(open("https://api.github.com/users/#{current_user.github_username}/repos").read)    
