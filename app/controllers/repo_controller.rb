@@ -22,7 +22,7 @@ class RepoController < ApplicationController
             "push"
           ],
           :config => {
-            :url => "#{root_url}repo?repo_id=#{repo.id}&user_id=#{current_user.id}",
+            :url => "#{root_url}repo_hook?repo_id=#{repo.id}&user_id=#{current_user.id}",
             :content_type => "json"
           }
         }.to_json,
@@ -46,6 +46,10 @@ class RepoController < ApplicationController
   def edit
   end
 
+  def hook
+    Resque.enqueue(GitWorker,params[:user_id],params[:repo_id])
+    render :json => {:success=>true}
+    
   def create
     @repo = Repo.new(params[:repo])
     @repo.save
