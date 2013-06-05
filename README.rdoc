@@ -1,6 +1,6 @@
 == Devernote
 
-Devernote is a todo-list management tool for developers using Evernote. It automatically looks for 
+Devernote is a todo-list management tool for developers using Evernote. It automatically looks for custom tags and creates notes on Evernote
 
 == Getting Started
 
@@ -10,12 +10,12 @@ To manage private git projects , clone this repository
 
 == Setting up
 
-[Clone Devernote]<code>git clone https://github.com/henghonglee/Devernote.git<code>
+[Clone Devernote]  <code>git clone https://github.com/henghonglee/Devernote.git<code>
 
-[Redis]Devernote runs resque which uses redis. Start your redis server here
+[Redis]  Devernote runs resque which uses redis. Start your redis server here
 
-[Start Workers]bundle exec rake workers:start
+[Start Workers]  bundle exec rake workers:start
 
-[Start Server]rails server
+[Start Server]  rails server
 
 [Usage] running at http://localhost:3000
