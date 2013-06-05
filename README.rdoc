@@ -1,6 +1,6 @@
 == Devernote
 
-Devernote is a todo-list management tool for developers using Evernote. It automatically looks for custom tags and creates notes on Evernote
+Devernote is a todo-list management tool for developers using Evernote. It automatically sets up commit hooks , looks for custom tags and creates notes on Evernote
 
 == Getting Started
 
