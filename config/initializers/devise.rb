@@ -221,7 +221,7 @@ Devise.setup do |config|
     site = 'https://www.evernote.com'
 
     Rails.application.config.middleware.use OmniAuth::Builder do
-      provider :evernote, ENV['EN_CONSUMER_KEY'], ENV['EN_CONSUMER_SECRET'], :client_options => {:site => site}
+      provider :evernote, 'henghonglee-3116', 'a0772e8e1cd00779', :client_options => {:site => site}
     end
 #    config.omniauth :evernote, 'henghonglee-3116', 'a0772e8e1cd00779', :client_options => {:site => site}
   # ==> Warden configuration
