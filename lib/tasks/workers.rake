@@ -159,5 +159,8 @@ namespace :workers do
     end
     Resque.workers.each {|w| w.unregister_worker}
   end
- 
+  task :unreg do
+    require 'resque'
+    Resque.workers.each {|w| w.unregister_worker}
+  end
 end
