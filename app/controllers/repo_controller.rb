@@ -49,7 +49,7 @@ class RepoController < ApplicationController
   def hook
     Resque.enqueue(GitWorker,params[:user_id],params[:repo_id])
     render :json => {:success=>true}
-    
+  end
   def create
     @repo = Repo.new(params[:repo])
     @repo.save
