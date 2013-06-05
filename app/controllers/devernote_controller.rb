@@ -18,11 +18,8 @@ class DevernoteController < ApplicationController
                            name: repo["name"]
                            )
       
-      if created_repo.persisted?
-        puts "repo persisted"
         current_user.repos << created_repo
         current_user.save
-      end
     end
     redirect_to devernote_index_path
   end
