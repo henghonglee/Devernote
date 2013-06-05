@@ -157,6 +157,7 @@ namespace :workers do
       host, pid, queues = worker.id.split(':')
       Process.kill("QUIT", pid.to_i)
     end
+    Resque.workers.each {|w| w.unregister_worker}
   end
  
 end
