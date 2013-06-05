@@ -5,7 +5,7 @@ Evernotedev::Application.routes.draw do
   resources :repo
   resources :devernote
   get '/auth/:provider/callback', to: 'sessions#create'
-  match '/repo_hook'. to:'repo#hook' ,:via => :post
+  match '/repo_hook' => 'repo#hook' ,:via => :post
   match '/set_github_username/:username' => 'devernote#refresh'
   match '/update_repo/:repo_id' => 'repo#update_repo'
   match '/remove_tag' => 'home#removetag'  
