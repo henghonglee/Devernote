@@ -10,7 +10,7 @@ To manage private git projects , clone this repository
 
 == Setting up
 
-[Clone Devernote]  <code>git clone https://github.com/henghonglee/Devernote.git<code>
+[Clone Devernote]  <code>git clone https://github.com/henghonglee/Devernote.git</code>
 
 [Redis]  Devernote runs resque which uses redis. Start your redis server here
 
