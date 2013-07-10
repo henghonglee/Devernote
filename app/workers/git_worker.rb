@@ -6,14 +6,14 @@ class GitWorker
         authtoken = user.everauth
         repo = Repo.find(repo_id)
         %x(git clone #{repo["clone_url"]} #{Rails.root.join('repos',repo["name"])})
-        puts "get or create notebook #{repo["name"]}"
+        #puts "get or create notebook #{repo["name"]}"
         #henghonglee-3116.13E7AC27E3D.687474703A2F2F35342E3233352E36382E3235332F75736572732F617574682F657665726E6F74652F63616C6C6261636B.325369766D84655F67D44F92E703E011
         client = EvernoteOAuth::Client.new(token: authtoken)
         note_store = client.note_store
         notebooks_list = note_store.listNotebooks
 
-        puts "notebooks list"
-        puts notebooks_list
+        # puts "notebooks list"
+        # puts notebooks_list
         
         nb = nil
         for notebk in notebooks_list
@@ -28,9 +28,9 @@ class GitWorker
           nb = note_store.createNotebook(notebook)  
         end
         
-        puts "notebook final"
-        puts nb
-        
+        # puts "notebook final"
+        #         puts nb
+        #         
         ##########################
 
         note_filter = Evernote::EDAM::NoteStore::NoteFilter.new
@@ -47,7 +47,7 @@ class GitWorker
         ss = %x(grep #{searchTerm} #{Rails.root.join('repos',repo["name"])} -nr -A 20)
         if ss.length>0
           ss = ss + "--"
-          puts "ss greater than 0 length #{ss}"
+#          puts "ss greater than 0 length #{ss}"
           todos = ss.split("\n")
           todocontent = ""
 
@@ -59,7 +59,7 @@ class GitWorker
             if todo.include?(searchTerm) && todo.count(':') >= 2
 
               if todocontent.length>0
-                puts "hit todo before --" 
+#                puts "hit todo before --" 
 
 @note.content = <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,7 +98,7 @@ EOF
 
         #now delete the repository
         %x(rm -rf #{Rails.root.join('repos',repo["name"])})
-        puts "done." + repo["name"]
+#        puts "done." + repo["name"]
 
   end
 end
